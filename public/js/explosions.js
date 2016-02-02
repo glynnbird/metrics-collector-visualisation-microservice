@@ -19,7 +19,6 @@ stringConverter = {};
 
 
 function doVisual(visualName, fmx, fmy, timeScale) {
-  console.log(visualName);
 	if (!timeScale) {timeScale=1;}
 	var w = window.innerWidth, h = window.innerHeight;
 	var visual = visuals[visualName];
@@ -62,10 +61,13 @@ setInterval(function() {
 },12000);
 
 var doEvent = function(data) {
-	var w = window.innerWidth, h = window.innerHeight;
-	var fmx = 100/w, fmy = 100/h;
-  fmx = Math.random();
-  fmy = Math.random();
+//	var w = window.innerWidth, h = window.innerHeight;
+//	var fmx = 100/w, fmy = 100/h;
+  var d = new Date();
+  var x = d.getTime() * 1000 + d.getUTCMilliseconds();
+  x = (x/10) % 300000;
+  var fmx = x/300000.0;
+  var fmy = Math.random(); 
 	return doVisual(type, fmx, fmy);
 };
 
